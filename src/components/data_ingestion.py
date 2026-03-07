@@ -11,6 +11,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 @dataclass
 class DataIngestionConfig:
     # Use os.path.join for cross-platform compatibility
@@ -59,6 +62,9 @@ if __name__ == "__main__":
     # 2. Transform Data
     data_transformation = DataTransformation()
     # Capturing the returned arrays for the next step (Model Training)
-    train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data, test_data)
+
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
     
     logging.info("Data Transformation and Ingestion steps successful.")

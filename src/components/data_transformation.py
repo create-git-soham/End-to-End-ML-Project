@@ -80,7 +80,7 @@ class DataTransformation:
             logging.info("Applying preprocessing object on training and testing dataframes.")
 
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
-            input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df) # Fixed input variable
+            input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df) 
 
             # Combining input features and target feature into one array
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
